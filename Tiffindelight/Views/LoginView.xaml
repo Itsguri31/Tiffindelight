@@ -15,7 +15,7 @@
         <mct:EventToCommandBehavior Command="{Binding GetCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>-->
 
-    <StackLayout>
+    <StackLayout Padding="25" Spacing="30">
         <Label Text="Email"/>
         <Entry x:Name="Email" Placeholder="Email Address" Text="{Binding Email}"/>
 
