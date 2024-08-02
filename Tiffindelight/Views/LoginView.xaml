@@ -11,11 +11,7 @@
         <viewmodels:LoginViewModel />
     </ContentPage.BindingContext>
 
-    <!--<ContentPage.Behaviors>
-        <mct:EventToCommandBehavior Command="{Binding GetCommand}" EventName="Appearing" />
-    </ContentPage.Behaviors>-->
-
-    <StackLayout Padding="25" Spacing="30">
+    <StackLayout Padding="25" Spacing="25">
         <Label Text="Email"/>
         <Entry x:Name="Email" Placeholder="Email Address" Text="{Binding Email}"/>
 
