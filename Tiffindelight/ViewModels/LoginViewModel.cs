@@ -46,6 +46,7 @@ namespace Tiffindelight.ViewModels
             if (success)
             {
                 //await Shell.Current.GoToAsync($"///{nameof(Views.ActivityListView)}");
+                await Shell.Current.GoToAsync("//HomePage");
             }
         }
 
