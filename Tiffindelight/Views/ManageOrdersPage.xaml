@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:Tiffindelight.ViewModels"
+             x:Class="Tiffindelight.Views.ManageOrdersPage"
+             Title="Manage Orders">
+    <ContentPage.BindingContext>
+        <viewmodels:ManageOrdersViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="10">
+
+            <Label Text="Customer Orders"
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   Margin="0,20,0,10" />
+
+            <!-- Customer Orders CollectionView -->
+            <CollectionView ItemsSource="{Binding CustomerOrders}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="LightGray" CornerRadius="10" Padding="10" Margin="0,10">
+                            <StackLayout>
+                                <Label Text="{Binding CustomerName}" 
+                                       FontSize="Medium" 
+                                       FontAttributes="Bold" />
+
+                                <Label Text="Order Details:" 
+                                       FontSize="Small" 
+                                       FontAttributes="Bold" />
+
+                                <Label Text="{Binding OrderDetails}" 
+                                       FontSize="Small" 
+                                       TextColor="Gray" />
+
+                                <Label Text="Membership Info:" 
+                                       FontSize="Small" 
+                                       FontAttributes="Bold" />
+
+                                <Label Text="{Binding MembershipInfo}" 
+                                       FontSize="Small" 
+                                       TextColor="Gray" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

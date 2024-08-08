@@ -9,7 +9,86 @@
         </viewmodels:HomePageViewModel>
     </ContentPage.BindingContext>
     
-    <VerticalStackLayout>
-       
+    <!-- ScrollView to enable scrolling -->
+    <ScrollView>
+
+    <VerticalStackLayout Padding="10">
+
+        <!-- Search Bar -->
+        <SearchBar Placeholder="Search food items..." 
+                   Text="{Binding SearchQuery}" 
+                   SearchCommand="{Binding SearchCommand}"
+                   HorizontalOptions="FillAndExpand"
+                   Margin="0,20,0,10" />
+
+        <Label Text="Today's Special" 
+               FontSize="Large" 
+               FontAttributes="Bold" 
+               HorizontalOptions="Center" 
+               Margin="0,10,0,10" />
+
+        <!-- Food Items CollectionView -->
+        <CollectionView ItemsSource="{Binding FilteredFoodItems}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="YellowGreen" CornerRadius="10" Padding="10" Margin="0,10">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{Binding ImageUrl}" 
+                                   WidthRequest="80" 
+                                   HeightRequest="80" 
+                                   Aspect="AspectFill"
+                                   VerticalOptions="Center" />
+
+                            <StackLayout Margin="10,0,0,0">
+                                <Label Text="{Binding Name}" 
+                                       FontSize="Medium" 
+                                       FontAttributes="Bold" />
+
+                                <Label Text="{Binding Description}" 
+                                       FontSize="Small" 
+                                       TextColor="Gray" 
+                                       LineBreakMode="TailTruncation" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Button to View All Items -->
+        <Button Text="View All Items"
+                BackgroundColor="ForestGreen"
+                TextColor="White"
+                HorizontalOptions="Center"
+                Command="{Binding ViewAllItemsCommand}" 
+                Margin="0,20,0,10" />
+
+        <!-- Admin Dashboard Section -->
+        <Label Text="Admin Dashboard" 
+               FontSize="Large" 
+               FontAttributes="Bold" 
+               HorizontalOptions="Center" 
+               Margin="0,30,0,10" />
+
+        <Frame BorderColor="LightGray" CornerRadius="10" Padding="10" Margin="0,10">
+            <StackLayout>
+                <Button Text="Manage Tiffin Menus"
+                        BackgroundColor="Grey"
+                        TextColor="White"
+                        Command="{Binding ManageMenusCommand}"
+                        Margin="0,5,0,5"/>
+                <Button Text="Manage Orders"
+                        BackgroundColor="Grey"
+                        TextColor="White"
+                        Command="{Binding ManageOrdersCommand}"
+                        Margin="0,5,0,5"/>
+                <Button Text="Manage Users"
+                        BackgroundColor="Grey"
+                        TextColor="White"
+                        Command="{Binding ManageUsersCommand}"
+                        Margin="0,5,0,5"/>
+            </StackLayout>
+        </Frame>
     </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

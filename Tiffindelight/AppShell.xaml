@@ -16,6 +16,11 @@
         Title="HomePage"
         ContentTemplate="{DataTemplate views:HomePage}"
         Route="HomePage" />
-    
+
+    <!-- Register other routes here -->
+    <ShellContent 
+        Title="Manage Orders" 
+        ContentTemplate="{DataTemplate views:ManageOrdersPage}" />
+
 
 </Shell>
