@@ -1,26 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Shell
-    x:Class="Tiffindelight.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:views="using:Tiffindelight.Views"
-    Shell.FlyoutBehavior="Flyout"
-   >
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:Tiffindelight.Views"
+       x:Class="Tiffindelight.AppShell"
+       Shell.FlyoutBehavior="Flyout">
 
-    <ShellContent
-        Title="LoginView"
-        ContentTemplate="{DataTemplate views:LoginView}"
-        Route="LoginView" />
-
-    <ShellContent
-        Title="HomePage"
-        ContentTemplate="{DataTemplate views:HomePage}"
-        Route="HomePage" />
-
-    <!-- Register other routes here -->
-    <ShellContent 
-        Title="Manage Orders" 
-        ContentTemplate="{DataTemplate views:ManageOrdersPage}" />
-
-
+    <!-- Define routes here -->
+    <ShellContent Title="Login" Route="LoginView" ContentTemplate="{DataTemplate views:LoginView}" />
+    <ShellContent Title="Home" Route="HomePage" ContentTemplate="{DataTemplate views:HomePage}" />
+    <ShellContent Title="Manage Orders" Route="ManageOrdersPage" ContentTemplate="{DataTemplate views:ManageOrdersPage}" />
+    <ShellContent Title=" Manage Tiffin Menus" Route="Manage_Tiffin_Menus" ContentTemplate="{DataTemplate views:Manage_Tiffin_Menus}"/>
+    <ShellContent Title="Manage Users" Route="ManageUsers" ContentTemplate="{DataTemplate views:ManageUsers}"/>
 </Shell>

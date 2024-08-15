@@ -15,16 +15,23 @@ namespace Tiffindelight.ViewModels
             {
                 new CustomerOrder
                 {
-                    CustomerName = "John Doe",
-                    OrderDetails = "2x Paneer Tikka, 1x Chicken Biryani",
+                    CustomerName = "Gurkirat Singh",
+                    OrderDetails = "2x Veg Thali, 1x Chicken Burger",
                     MembershipInfo = "Gold Member - Valid till 31 Dec 2024"
                 },
                 new CustomerOrder
                 {
-                    CustomerName = "Jane Smith",
+                    CustomerName = "Baljinder Maan",
                     OrderDetails = "1x Vegetable Pulao, 1x Paneer Tikka",
                     MembershipInfo = "Silver Member - Valid till 30 Nov 2024"
-                }
+                },   
+                new CustomerOrder
+                {
+                    CustomerName = "Amritpal Singh",
+                    OrderDetails = "2x Vegetable Pulao, 1x Veg Thali",
+                    MembershipInfo = "Bronze Member - Valid till 30 Oct 2024"
+                    }
+
             };
         }
     }

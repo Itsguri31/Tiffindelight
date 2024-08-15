@@ -41,12 +41,14 @@ namespace Tiffindelight.ViewModels
         private async Task SignIn()
         {
             var (success, message) = await Authentication.SignInAsync(Email, Password);
+            
+            
             Message = message;
 
             if (success)
             {
-                //await Shell.Current.GoToAsync($"///{nameof(Views.ActivityListView)}");
-                await Shell.Current.GoToAsync("//HomePage");
+                await Shell.Current.GoToAsync($"///{nameof(Views.HomePage)}");
+                //await Shell.Current.GoToAsync("//HomePage");
             }
         }
 
@@ -57,7 +59,7 @@ namespace Tiffindelight.ViewModels
 
             if (success)
             {
-             //   await Shell.Current.GoToAsync($"///{nameof(Views.ActivityListView)}");
+                await Shell.Current.GoToAsync($"///{nameof(Views.HomePage)}");
             }
 
             //await Shell.Current.GoToAsync($"///{nameof(Views.ActivityDetailsView)}?id={activity.Id}");

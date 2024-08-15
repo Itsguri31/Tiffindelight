@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using CommunityToolkit.Mvvm;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Maui.Controls;  // Ensure you have this for Shell navigation
+
 namespace Tiffindelight.ViewModels
 {
-    public partial class HomePageViewModel: ObservableRecipient
+    public partial class HomePageViewModel : ObservableRecipient
     {
         [ObservableProperty]
         private ObservableCollection<FoodItem> foodItems;
@@ -24,11 +22,10 @@ namespace Tiffindelight.ViewModels
         {
             FoodItems = new ObservableCollection<FoodItem>
             {
-                new FoodItem { Name = "Paneer Tikka", Description = "Delicious grilled paneer cubes.", ImageUrl = "paneer_tikka.png" },
+                new FoodItem { Name = "Veg Thali", Description = "Delicious grilled paneer cubes.", ImageUrl = "veg_thali.png" },
                 new FoodItem { Name = "Chicken Biryani", Description = "Aromatic and flavorful rice with chicken.", ImageUrl = "chicken_biryani.png" },
-                new FoodItem { Name = "Chicken Burgur", Description = "Delicious grilled chicken.", ImageUrl = "chicken_burgur.png" },
-                new FoodItem { Name = "Vegetable Pulao", Description = "Healthy and tasty vegetable rice.", ImageUrl = "vegetable_pulao.png" },
-                
+                new FoodItem { Name = "Chicken Burger", Description = "Delicious grilled chicken.", ImageUrl = "chicken_burger.png" },
+                new FoodItem { Name = "Salad", Description = "Healthy and tasty vegetable rice.", ImageUrl = "greek_salad.png" },
             };
 
             FilteredFoodItems = new ObservableCollection<FoodItem>(FoodItems);
@@ -49,28 +46,31 @@ namespace Tiffindelight.ViewModels
         }
 
         [RelayCommand]
-        private void ViewAllItems()
+        private async Task ViewAllItems()
         {
             // Navigate to the page showing all items
+            await Shell.Current.GoToAsync("AllItemsPage");  // Adjust the route name as needed
         }
 
+        
         [RelayCommand]
-        private void ManageMenus()
-        {
-            // Navigate to the menu management page
-        }
-
-        [RelayCommand]
-        private void ManageOrders()
+        private async Task ManageOrders()
         {
             // Navigate to the order management page
+            //await Shell.Current.GoToAsync("ManageOrdersPage");  // Adjust the route name as needed
+            await Shell.Current.GoToAsync($"///{nameof(Views.ManageOrdersPage)}");
+        }
+        [RelayCommand]
+        private async Task ManageMenus()
+        {
+            await Shell.Current.GoToAsync($"///{nameof(Views.Manage_Tiffin_Menus)}");
+        }
+        [RelayCommand]
+        private async Task ManageUsers()
+        {
+            await Shell.Current.GoToAsync($"///{nameof(Views.ManageUsers)}");
         }
 
-        [RelayCommand]
-        private void ManageUsers()
-        {
-            // Navigate to the user management page
-        }
     }
 
     public class FoodItem
