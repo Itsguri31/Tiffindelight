@@ -3,11 +3,48 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:Tiffindelight.ViewModels"
              x:Class="Tiffindelight.Views.ManageUsers"
-             Title="ManageUsers">
+             Title="Manage Users">
+
     <ContentPage.BindingContext>
         <viewmodels:ManageUsersViewModel/>
     </ContentPage.BindingContext>
-    <VerticalStackLayout>
-       
+
+    <VerticalStackLayout Padding="10">
+        <!-- Search Bar -->
+        <SearchBar Placeholder="Search users"
+                   Text="{Binding SearchQuery}"
+                   SearchCommand="{Binding SearchCommand}"/>
+
+        <!-- List of Users -->
+        <CollectionView ItemsSource="{Binding Users}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="Gray" Padding="10" Margin="5" CornerRadius="5">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding FullName}" FontAttributes="Bold" FontSize="18"/>
+                            <Label Text="{Binding Email}" FontSize="14"/>
+                            <Label Text="{Binding MembershipStatus}" FontSize="14" TextColor="Green"/>
+
+                            <HorizontalStackLayout>
+                                <Button Text="Edit"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ManageUsersViewModel}}, Path=EditCommand}"
+                                        CommandParameter="{Binding .}"
+                                        BackgroundColor="LightBlue"/>
+                                <Button Text="Delete"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ManageUsersViewModel}}, Path=DeleteCommand}"
+                                        CommandParameter="{Binding .}"
+                                        BackgroundColor="LightCoral"/>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Add New User Button -->
+        <Button Text="Add New User"
+                Command="{Binding AddUserCommand}"
+                BackgroundColor="LightGreen"
+                Margin="10"/>
     </VerticalStackLayout>
 </ContentPage>

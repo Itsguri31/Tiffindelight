@@ -4,11 +4,104 @@
              xmlns:viewmodels="clr-namespace:Tiffindelight.ViewModels"
              x:Class="Tiffindelight.Views.Manage_Tiffin_Menus"
              x:DataType="viewmodels:ManageTiffinMenus"
-             Title="Manage_Tiffin_Menus">
+             Title="Manage Tiffin Menus"
+             BackgroundColor="#1F1F1F">
+    <!-- Dark background color -->
     <ContentPage.BindingContext>
         <viewmodels:ManageTiffinMenus/>
     </ContentPage.BindingContext>
-    <VerticalStackLayout>
-      
-    </VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout Padding="10">
+            <!-- Dashboard Overview -->
+            <Frame BackgroundColor="#2C2C2C" CornerRadius="10" Padding="10">
+                <VerticalStackLayout>
+                    <Label Text="Dashboard Overview" FontSize="18" FontAttributes="Bold" TextColor="White"/>
+                    <Label Text="Number of Items: 5" TextColor="LightGray" />
+                    <Label Text="Number of Categories: 3" TextColor="LightGray" />
+                    <Label Text="Current Promotions: Flat 20% off on purchase above 50 dollars" TextColor="LightGreen" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Menu Item Management -->
+            <Frame BackgroundColor="#2C2C2C" CornerRadius="10" Padding="10" Margin="0,10,0,0">
+                <VerticalStackLayout>
+                    <Label Text="Menu Item Management" FontSize="18" FontAttributes="Bold" TextColor="White"/>
+                    <Button Text="Add New Item" Command="{Binding AddNewItemCommand}" BackgroundColor="#4CAF50" TextColor="White"/>
+                    <Button Text="Edit Item" Command="{Binding EditItemCommand}" BackgroundColor="#4CAF50" TextColor="White"/>
+                    <Button Text="Delete Item" Command="{Binding DeleteItemCommand}" BackgroundColor="#4CAF50" TextColor="White"/>
+                    <SearchBar Placeholder="Search items..." SearchCommand="{Binding SearchItemsCommand}" BackgroundColor="#2C2C2C" TextColor="White" PlaceholderColor="LightGray"/>
+                    <CollectionView ItemsSource="{Binding MenuItems}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Margin="5" Padding="10" BackgroundColor="#3C3C3C" CornerRadius="8">
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold" TextColor="White"/>
+                                        <Label Text="{Binding Description}" TextColor="LightGray" />
+                                        <Label Text="{Binding Price, StringFormat='Price: {0:C}'}" TextColor="LightGray" />
+                                        <!-- Include image if available -->
+                                        <Image Source="{Binding ImageUrl}" HeightRequest="100" Aspect="AspectFill"/>
+                                        <Button Text="View Details" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ViewDetailsCommand}" CommandParameter="{Binding .}" BackgroundColor="#4CAF50" TextColor="White"/>
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Category Management -->
+            <Frame BackgroundColor="#2C2C2C" CornerRadius="10" Padding="10" Margin="0,10,0,0">
+                <VerticalStackLayout>
+                    <Label Text="Category Management" FontSize="18" FontAttributes="Bold" TextColor="White"/>
+                    <Button Text="Add Category" Command="{Binding AddCategoryCommand}" BackgroundColor="#4CAF50" TextColor="White"/>
+                    <Button Text="Edit Category" Command="{Binding EditCategoryCommand}" BackgroundColor="#4CAF50" TextColor="White"/>
+                    <Button Text="Delete Category" Command="{Binding DeleteCategoryCommand}" BackgroundColor="#4CAF50" TextColor="White"/>
+                    <CollectionView ItemsSource="{Binding Categories}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Margin="5" Padding="10" BackgroundColor="#3C3C3C" CornerRadius="8">
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold" TextColor="White"/>
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Special Offers and Promotions -->
+            <Frame BackgroundColor="#2C2C2C" CornerRadius="10" Padding="10" Margin="0,10,0,0">
+                <VerticalStackLayout>
+                    <Label Text="Special Offers and Promotions" FontSize="18" FontAttributes="Bold" TextColor="White"/>
+                    <Button Text="Add Offer" Command="{Binding AddOfferCommand}" BackgroundColor="#4CAF50" TextColor="White"/>
+                    <Button Text="Edit Offer" Command="{Binding EditOfferCommand}" BackgroundColor="#4CAF50" TextColor="White"/>
+                    <Button Text="Delete Offer" Command="{Binding DeleteOfferCommand}" BackgroundColor="#4CAF50" TextColor="White"/>
+                    <CollectionView ItemsSource="{Binding SpecialOffers}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Margin="5" Padding="10" BackgroundColor="#3C3C3C" CornerRadius="8">
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding Title}" FontSize="16" FontAttributes="Bold" TextColor="White"/>
+                                        <Label Text="{Binding Description}" TextColor="LightGray" />
+                                        <Label Text="{Binding Discount, StringFormat='Discount: {0:P}'}" TextColor="LightGray" />
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Pricing and Variants -->
+            <Frame BackgroundColor="#2C2C2C" CornerRadius="10" Padding="10" Margin="0,10,0,0">
+                <VerticalStackLayout>
+                    <Label Text="Pricing and Variants" FontSize="18" FontAttributes="Bold" TextColor="White"/>
+                    <Button Text="Update Prices" Command="{Binding UpdatePricesCommand}" BackgroundColor="#4CAF50" TextColor="White"/>
+                    <Button Text="Manage Variants" Command="{Binding ManageVariantsCommand}" BackgroundColor="#4CAF50" TextColor="White"/>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
